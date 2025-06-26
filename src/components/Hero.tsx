@@ -23,8 +23,8 @@ const Hero: React.FC = () => {
           className="w-full h-full object-cover"
           poster="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
         >
-          <source src="https://cdn.pixabay.com/vimeo/359204811/video-1582475132.mp4?width=1280&hash=db5c5aa4a4d50e3d4c5a4b5c6ac5f8e85b2c4d6e" type="video/mp4" />
-          <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+          <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
       </div>
