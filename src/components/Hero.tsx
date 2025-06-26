@@ -21,10 +21,12 @@ const Hero: React.FC = () => {
           loop 
           playsInline
           className="w-full h-full object-cover"
+          poster="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
         >
-          <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761" type="video/mp4" />
+          <source src="https://cdn.pixabay.com/vimeo/359204811/video-1582475132.mp4?width=1280&hash=db5c5aa4a4d50e3d4c5a4b5c6ac5f8e85b2c4d6e" type="video/mp4" />
+          <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 pb-video-overlay"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
       </div>
 
       {/* Content */}
@@ -60,7 +62,7 @@ const Hero: React.FC = () => {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="pb-pulse-arrow text-white">
+        <div className="animate-bounce text-white">
           <ChevronDown className="w-8 h-8" />
         </div>
         <p className="text-white text-sm mt-2">Scroll to explore</p>

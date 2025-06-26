@@ -1,141 +1,148 @@
 
-import React, { useEffect, useRef, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import React, { useEffect, useState } from 'react';
+import { MapPin, Users, Star } from 'lucide-react';
 
 const LocationsShowcase: React.FC = () => {
-  const [isInView, setIsInView] = useState(false);
   const [activeLocation, setActiveLocation] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const locations = [
     {
-      name: "London",
-      image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad",
-      description: "Our flagship campus in the heart of London's music scene",
-      stats: { students: "2,500+", studios: "25", years: "30+" },
-      features: ["SSL Console Rooms", "Vintage Synthesizers", "Industry Partnerships"]
+      id: 1,
+      name: 'London',
+      image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      description: 'Our flagship campus in the heart of London\'s music scene',
+      students: '2,500+',
+      facilities: '12 Studios',
+      rating: '4.9',
+      highlight: 'SSL Console Training'
     },
     {
-      name: "Los Angeles",
-      image: "https://images.unsplash.com/photo-1534430480872-3498386e7856",
-      description: "Hollywood-based campus with cutting-edge facilities",
-      stats: { students: "1,800+", studios: "20", years: "15+" },
-      features: ["Dolby Atmos Mixing", "Film Scoring Suite", "Celebrity Masterclasses"]
+      id: 2,
+      name: 'Los Angeles',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      description: 'Hollywood\'s premier music production destination',
+      students: '1,800+',
+      facilities: '8 Studios',
+      rating: '4.8',
+      highlight: 'Industry Connections'
     },
     {
-      name: "Ibiza",
-      image: "https://images.unsplash.com/photo-1571115764595-644a1f56a55c",
-      description: "Electronic music paradise with world-class DJs",
-      stats: { students: "800+", studios: "12", years: "10+" },
-      features: ["Beach Studios", "Festival Connections", "Club Residencies"]
+      id: 3,
+      name: 'Ibiza',
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      description: 'Electronic music paradise with world-class DJs',
+      students: '800+',
+      facilities: '5 Studios',
+      rating: '4.9',
+      highlight: 'DJ Masterclasses'
     },
     {
-      name: "Online",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
-      description: "Learn from anywhere with our interactive online platform",
-      stats: { students: "5,000+", courses: "50+", countries: "80+" },
-      features: ["Live Streaming", "1-on-1 Mentoring", "Virtual Studios"]
+      id: 4,
+      name: 'Online',
+      image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+      description: 'Learn from anywhere with our cutting-edge online platform',
+      students: '5,000+',
+      facilities: 'Virtual Studios',
+      rating: '4.7',
+      highlight: '24/7 Access'
     }
   ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveLocation((prev) => (prev + 1) % locations.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section ref={sectionRef} className="py-20 bg-[var(--pb-dark)] overflow-hidden">
+    <section className="py-20 bg-gradient-to-b from-[var(--pb-dark)] to-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className={`text-center mb-16 transform transition-all duration-1000 ${isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-          <h2 className="text-5xl font-black text-white mb-6">
-            Global <span className="pb-text-gradient">Campuses</span>
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+            Global <span className="pb-text-gradient">Presence</span>
           </h2>
           <p className="text-xl text-[var(--pb-light-gray)] max-w-3xl mx-auto">
-            From London to Los Angeles, Ibiza to online - learn music production and DJ skills 
-            in world-renowned locations with industry-standard facilities.
+            Four iconic locations, one shared passion for music excellence
           </p>
         </div>
 
-        {/* Horizontal Scrolling Cards */}
-        <div 
-          ref={scrollRef}
-          className="flex space-x-8 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {locations.map((location, index) => (
-            <Card 
-              key={location.name}
-              className={`flex-shrink-0 w-80 lg:w-96 bg-white/10 backdrop-blur-sm border-white/20 snap-start transform transition-all duration-700 hover:scale-105 ${
-                isInView ? 'translate-x-0 opacity-100' : 'translate-x-16 opacity-0'
-              }`}
-              style={{ transitionDelay: `${index * 0.2}s` }}
-              onMouseEnter={() => setActiveLocation(index)}
-            >
-              <div className="relative overflow-hidden rounded-t-lg">
-                <img 
-                  src={location.image} 
-                  alt={location.name}
-                  className="w-full h-48 object-cover transition-transform duration-500 hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-4 left-4">
-                  <h3 className="text-2xl font-bold text-white">{location.name}</h3>
+        <div className="relative">
+          {/* Location Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {locations.map((location, index) => (
+              <div
+                key={location.id}
+                className={`group cursor-pointer transition-all duration-500 ${
+                  activeLocation === index ? 'scale-105 z-10' : 'scale-100'
+                }`}
+                onClick={() => setActiveLocation(index)}
+              >
+                <div className="relative overflow-hidden rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:border-[var(--pb-gold)] transition-all duration-300">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={location.image}
+                      alt={location.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                  </div>
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-2xl font-bold">{location.name}</h3>
+                      <div className="flex items-center gap-1">
+                        <Star className="w-4 h-4 fill-[var(--pb-gold)] text-[var(--pb-gold)]" />
+                        <span className="text-sm">{location.rating}</span>
+                      </div>
+                    </div>
+                    
+                    <p className="text-sm text-[var(--pb-light-gray)] mb-4">
+                      {location.description}
+                    </p>
+                    
+                    <div className="flex justify-between items-center text-xs">
+                      <div className="flex items-center gap-1">
+                        <Users className="w-3 h-3" />
+                        <span>{location.students}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MapPin className="w-3 h-3" />
+                        <span>{location.facilities}</span>
+                      </div>
+                      <div className="px-2 py-1 bg-[var(--pb-gold)] rounded-full">
+                        <span className="text-black font-semibold">{location.highlight}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              <CardContent className="p-6">
-                <p className="text-[var(--pb-light-gray)] mb-6 leading-relaxed">
-                  {location.description}
-                </p>
-                
-                <div className="grid grid-cols-3 gap-4 mb-6">
-                  {Object.entries(location.stats).map(([key, value]) => (
-                    <div key={key} className="text-center">
-                      <div className="text-2xl font-bold pb-text-gradient">{value}</div>
-                      <div className="text-xs text-[var(--pb-light-gray)] capitalize">{key}</div>
-                    </div>
-                  ))}
-                </div>
+            ))}
+          </div>
 
-                <div className="space-y-2 mb-6">
-                  {location.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-sm text-[var(--pb-light-gray)]">
-                      <div className="w-2 h-2 pb-gradient rounded-full mr-3"></div>
-                      {feature}
-                    </div>
-                  ))}
-                </div>
+          {/* Location Indicators */}
+          <div className="flex justify-center gap-3">
+            {locations.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveLocation(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  activeLocation === index
+                    ? 'bg-[var(--pb-gold)] scale-125'
+                    : 'bg-white/30 hover:bg-white/50'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
 
-                <Button 
-                  className="w-full bg-transparent border-2 border-[var(--pb-gold)] text-[var(--pb-gold)] hover:pb-gradient hover:text-white transition-all duration-300"
-                >
-                  Explore Campus
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Call to Action */}
+        <div className="text-center mt-16">
+          <button className="pb-gradient text-white hover:opacity-90 transition-all duration-300 transform hover:scale-105 px-8 py-4 text-lg font-semibold rounded-lg">
+            Explore All Locations
+          </button>
         </div>
       </div>
-
-      <style jsx>{`
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </section>
   );
 };
