@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -95,12 +96,26 @@ const MegaDropdown: React.FC<MegaDropdownProps> = ({ isOpen, onClose, type }) =>
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOverWhiteSection, setIsOverWhiteSection] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 50);
+      
+      // Check if we're over a white/light section
+      // Adjust these values based on your page sections
+      const whiteSection1Start = 600; // Adjust based on your layout
+      const whiteSection1End = 1200;
+      const whiteSection2Start = 2000;
+      const whiteSection2End = 2800;
+      
+      const isInWhiteSection = (scrollY >= whiteSection1Start && scrollY <= whiteSection1End) ||
+                              (scrollY >= whiteSection2Start && scrollY <= whiteSection2End);
+      
+      setIsOverWhiteSection(isInWhiteSection);
     };
 
     const handleClickOutside = () => {
@@ -130,17 +145,34 @@ const Header: React.FC = () => {
     setActiveDropdown(activeDropdown === itemName.toLowerCase() ? null : itemName.toLowerCase());
   };
 
+  // Dynamic text color based on background
+  const getTextColor = () => {
+    if (isOverWhiteSection) {
+      return 'text-[var(--pb-dark)]';
+    }
+    return 'text-white';
+  };
+
+  const getHoverTextColor = () => {
+    if (isOverWhiteSection) {
+      return 'hover:text-[var(--pb-gold)]';
+    }
+    return 'hover:text-[var(--pb-bright-gold)]';
+  };
+
   return (
     <header className={`fixed w-full top-0 z-[9998] transition-all duration-300 ${
       isScrolled 
-        ? 'bg-[var(--pb-dark)]/95 backdrop-blur-md shadow-lg border-b border-white/10' 
+        ? isOverWhiteSection
+          ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200'
+          : 'bg-[var(--pb-dark)]/95 backdrop-blur-md shadow-lg border-b border-white/10'
         : 'bg-black/30 backdrop-blur-sm'
     }`}>
       <nav className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center relative z-[10000]">
-            <h1 className="text-2xl font-bold text-white hover:text-[var(--pb-gold)] transition-colors cursor-pointer">
+            <h1 className={`text-2xl font-bold transition-colors cursor-pointer ${getTextColor()} ${getHoverTextColor()}`}>
               POINT BLANK
             </h1>
           </div>
@@ -153,7 +185,7 @@ const Header: React.FC = () => {
                 className="relative"
               >
                 <button 
-                  className="flex items-center space-x-1 text-white hover:text-[var(--pb-bright-gold)] transition-colors font-medium py-2 px-1"
+                  className={`flex items-center space-x-1 transition-colors font-medium py-2 px-1 ${getTextColor()} ${getHoverTextColor()}`}
                   onClick={(e) => item.hasDropdown && handleDropdownToggle(item.name, e)}
                 >
                   <span>{item.name}</span>
@@ -177,7 +209,7 @@ const Header: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            className="lg:hidden text-white hover:text-[var(--pb-gold)] transition-colors relative z-[10000]"
+            className={`lg:hidden transition-colors relative z-[10000] ${getTextColor()} ${getHoverTextColor()}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
