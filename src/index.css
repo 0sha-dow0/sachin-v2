@@ -161,18 +161,31 @@
   transform: translateY(0);
 }
 
-/* Navigation styles */
+/* Enhanced Navigation styles */
 .nav-dropdown {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .nav-dropdown.open {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Prevent dropdown from being cut off */
+.nav-dropdown {
+  min-height: 400px;
+}
+
+/* Ensure header stays above everything */
+header {
+  position: fixed !important;
+  z-index: 9998 !important;
 }
 
 /* Custom scrollbar */

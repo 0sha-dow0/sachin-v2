@@ -12,7 +12,7 @@ interface MegaDropdownProps {
 const MegaDropdown: React.FC<MegaDropdownProps> = ({ isOpen, onClose, type }) => {
   if (type === 'courses') {
     return (
-      <div className={`nav-dropdown ${isOpen ? 'open' : ''} absolute top-full left-0 w-full bg-white shadow-2xl border-t-4 border-[var(--pb-gold)] z-50`}>
+      <div className={`nav-dropdown ${isOpen ? 'open' : ''} absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-2xl border-t-4 border-[var(--pb-gold)] z-[9999]`}>
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="grid grid-cols-4 gap-8">
             <div>
@@ -65,7 +65,7 @@ const MegaDropdown: React.FC<MegaDropdownProps> = ({ isOpen, onClose, type }) =>
   }
 
   return (
-    <div className={`nav-dropdown ${isOpen ? 'open' : ''} absolute top-full left-0 w-full bg-white shadow-2xl border-t-4 border-[var(--pb-gold)] z-50`}>
+    <div className={`nav-dropdown ${isOpen ? 'open' : ''} absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-2xl border-t-4 border-[var(--pb-gold)] z-[9999]`}>
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="grid grid-cols-4 gap-6">
           {[
@@ -104,8 +104,17 @@ const Header: React.FC = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const handleClickOutside = () => {
+      setActiveDropdown(null);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, []);
 
   const navItems = [
@@ -117,16 +126,21 @@ const Header: React.FC = () => {
     { name: 'Contact', hasDropdown: false }
   ];
 
+  const handleDropdownToggle = (itemName: string, event: React.MouseEvent) => {
+    event.stopPropagation();
+    setActiveDropdown(activeDropdown === itemName.toLowerCase() ? null : itemName.toLowerCase());
+  };
+
   return (
-    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+    <header className={`fixed w-full top-0 z-[9998] transition-all duration-300 ${
       isScrolled 
-        ? 'bg-[var(--pb-dark)]/95 backdrop-blur-md shadow-lg' 
-        : 'bg-transparent'
+        ? 'bg-[var(--pb-dark)]/95 backdrop-blur-md shadow-lg border-b border-white/10' 
+        : 'bg-black/30 backdrop-blur-sm'
     }`}>
       <nav className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center relative z-[10000]">
             <h1 className="text-2xl font-bold text-white hover:text-[var(--pb-gold)] transition-colors cursor-pointer">
               POINT BLANK
             </h1>
@@ -138,10 +152,11 @@ const Header: React.FC = () => {
               <div 
                 key={item.name} 
                 className="relative"
-                onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.name.toLowerCase())}
-                onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="flex items-center space-x-1 text-white hover:text-[var(--pb-bright-gold)] transition-colors font-medium">
+                <button 
+                  className="flex items-center space-x-1 text-white hover:text-[var(--pb-bright-gold)] transition-colors font-medium py-2 px-1"
+                  onClick={(e) => item.hasDropdown && handleDropdownToggle(item.name, e)}
+                >
                   <span>{item.name}</span>
                   {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
                 </button>
@@ -156,14 +171,14 @@ const Header: React.FC = () => {
               </div>
             ))}
             
-            <Button className="pb-gradient text-white hover:opacity-90 transition-opacity font-semibold px-6">
+            <Button className="pb-gradient text-white hover:opacity-90 transition-opacity font-semibold px-6 relative z-[10000]">
               Apply Now
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button 
-            className="lg:hidden text-white hover:text-[var(--pb-gold)] transition-colors"
+            className="lg:hidden text-white hover:text-[var(--pb-gold)] transition-colors relative z-[10000]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -172,7 +187,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-[var(--pb-dark)] shadow-lg">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-[var(--pb-dark)]/95 backdrop-blur-md shadow-lg border-t border-white/10 z-[9999]">
             <div className="px-6 py-4 space-y-4">
               {navItems.map((item) => (
                 <a key={item.name} href="#" className="block text-white hover:text-[var(--pb-gold)] transition-colors font-medium">
