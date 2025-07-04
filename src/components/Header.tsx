@@ -12,86 +12,87 @@ const MegaDropdown: React.FC<MegaDropdownProps> = ({ isOpen, onClose, type }) =>
   if (type === 'courses') {
     return (
       <div className={`nav-dropdown ${isOpen ? 'open' : ''} absolute top-full left-0 w-full bg-white shadow-2xl border-t-4 border-[var(--pb-gold)] z-[9999]`}>
-        <div className="max-w-7xl mx-auto px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            
             {/* Music Production Column */}
-            <div className="space-y-8">
-              <h3 className="font-bold text-xl text-[var(--pb-dark)] border-b-2 border-gray-200 pb-4">
+            <div className="bg-gray-50 rounded-lg p-4 lg:p-6 border border-gray-100">
+              <h3 className="font-bold text-lg lg:text-xl text-[var(--pb-dark)] mb-4 pb-2 border-b-2 border-[var(--pb-gold)]">
                 Music Production
               </h3>
-              <div className="space-y-6">
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+              <div className="space-y-3">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   BA (Hons) Music Production
                 </a>
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Diploma in Music Production
                 </a>
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Ableton Live Course
                 </a>
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Logic Pro Course
                 </a>
               </div>
             </div>
 
             {/* DJ Courses Column */}
-            <div className="space-y-8">
-              <h3 className="font-bold text-xl text-[var(--pb-dark)] border-b-2 border-gray-200 pb-4">
+            <div className="bg-gray-50 rounded-lg p-4 lg:p-6 border border-gray-100">
+              <h3 className="font-bold text-lg lg:text-xl text-[var(--pb-dark)] mb-4 pb-2 border-b-2 border-[var(--pb-gold)]">
                 DJ Courses
               </h3>
-              <div className="space-y-6">
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+              <div className="space-y-3">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Complete DJ Course
                 </a>
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Advanced DJ Techniques
                 </a>
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Club DJ Masterclass
                 </a>
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Festival DJ Course
                 </a>
               </div>
             </div>
 
             {/* Audio Engineering Column */}
-            <div className="space-y-8">
-              <h3 className="font-bold text-xl text-[var(--pb-dark)] border-b-2 border-gray-200 pb-4">
+            <div className="bg-gray-50 rounded-lg p-4 lg:p-6 border border-gray-100">
+              <h3 className="font-bold text-lg lg:text-xl text-[var(--pb-dark)] mb-4 pb-2 border-b-2 border-[var(--pb-gold)]">
                 Audio Engineering
               </h3>
-              <div className="space-y-6">
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+              <div className="space-y-3">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Sound Engineering Diploma
                 </a>
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Mixing & Mastering
                 </a>
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Live Sound Engineering
                 </a>
-                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 text-base leading-6">
+                <a href="#" className="block text-sm lg:text-base text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-1.5 leading-relaxed">
                   Pro Tools Certification
                 </a>
               </div>
             </div>
 
             {/* Popular Courses Column */}
-            <div className="space-y-8">
-              <h3 className="font-bold text-xl text-[var(--pb-dark)] border-b-2 border-gray-200 pb-4">
+            <div className="bg-gradient-to-br from-[var(--pb-gold)] to-[var(--pb-bright-gold)] rounded-lg p-4 lg:p-6 text-white">
+              <h3 className="font-bold text-lg lg:text-xl mb-4 pb-2 border-b-2 border-white/30">
                 Popular Courses
               </h3>
-              <div className="space-y-8">
-                <div className="bg-gray-50 p-6 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer border border-gray-200">
-                  <h4 className="font-semibold text-[var(--pb-dark)] text-base mb-3">Complete Music Production</h4>
-                  <p className="text-sm text-[var(--pb-medium-gray)] leading-relaxed">12-week intensive course</p>
+              <div className="space-y-4">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 lg:p-4 border border-white/20">
+                  <h4 className="font-semibold text-sm lg:text-base mb-2">Complete Music Production</h4>
+                  <p className="text-xs lg:text-sm opacity-90">12-week intensive course</p>
                 </div>
-                <div className="bg-gray-50 p-6 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer border border-gray-200">
-                  <h4 className="font-semibold text-[var(--pb-dark)] text-base mb-3">DJ & Music Production</h4>
-                  <p className="text-sm text-[var(--pb-medium-gray)] leading-relaxed">Combined diploma program</p>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 lg:p-4 border border-white/20">
+                  <h4 className="font-semibold text-sm lg:text-base mb-2">DJ & Music Production</h4>
+                  <p className="text-xs lg:text-sm opacity-90">Combined diploma program</p>
                 </div>
-                <Button className="w-full mt-8 pb-gradient text-white hover:opacity-90 text-base py-3">
+                <Button variant="outline" className="w-full mt-4 bg-white text-[var(--pb-dark)] hover:bg-gray-100 border-white font-semibold text-sm lg:text-base">
                   View All Courses
                 </Button>
               </div>
@@ -104,26 +105,28 @@ const MegaDropdown: React.FC<MegaDropdownProps> = ({ isOpen, onClose, type }) =>
 
   return (
     <div className={`nav-dropdown ${isOpen ? 'open' : ''} absolute top-full left-0 w-full bg-white shadow-2xl border-t-4 border-[var(--pb-gold)] z-[9999]`}>
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {[
             { name: 'London', image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad', desc: 'Flagship campus in the heart of London' },
             { name: 'Los Angeles', image: 'https://images.unsplash.com/photo-1534430480872-3498386e7856', desc: 'Hollywood-based studio facilities' },
             { name: 'Ibiza', image: 'https://images.unsplash.com/photo-1571115764595-644a1f56a55c', desc: 'Electronic music paradise' },
             { name: 'Online', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3', desc: 'Learn from anywhere in the world' }
           ].map((location) => (
-            <div key={location.name} className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-lg mb-4">
+            <div key={location.name} className="group cursor-pointer bg-white rounded-lg border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300">
+              <div className="relative overflow-hidden">
                 <img 
                   src={location.image} 
                   alt={location.name}
-                  className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-32 lg:h-40 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
               </div>
-              <h3 className="font-bold text-lg text-[var(--pb-dark)] group-hover:text-[var(--pb-gold)] transition-colors mb-2">{location.name}</h3>
-              <p className="text-sm text-[var(--pb-medium-gray)] mb-4 leading-relaxed">{location.desc}</p>
-              <Button variant="outline" size="sm" className="w-full">Learn More</Button>
+              <div className="p-3 lg:p-4">
+                <h3 className="font-bold text-base lg:text-lg text-[var(--pb-dark)] group-hover:text-[var(--pb-gold)] transition-colors mb-2">{location.name}</h3>
+                <p className="text-xs lg:text-sm text-[var(--pb-medium-gray)] mb-3 leading-relaxed">{location.desc}</p>
+                <Button variant="outline" size="sm" className="w-full text-xs lg:text-sm">Learn More</Button>
+              </div>
             </div>
           ))}
         </div>
