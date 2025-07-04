@@ -12,50 +12,89 @@ const MegaDropdown: React.FC<MegaDropdownProps> = ({ isOpen, onClose, type }) =>
   if (type === 'courses') {
     return (
       <div className={`nav-dropdown ${isOpen ? 'open' : ''} absolute top-full left-0 w-full bg-white shadow-2xl border-t-4 border-[var(--pb-gold)] z-[9999]`}>
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <h3 className="font-bold text-lg text-[var(--pb-dark)] border-b border-gray-200 pb-3 mb-4">Music Production</h3>
-              <ul className="space-y-3">
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">BA (Hons) Music Production</a></li>
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Diploma in Music Production</a></li>
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Ableton Live Course</a></li>
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Logic Pro Course</a></li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h3 className="font-bold text-lg text-[var(--pb-dark)] border-b border-gray-200 pb-3 mb-4">DJ Courses</h3>
-              <ul className="space-y-3">
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Complete DJ Course</a></li>
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Advanced DJ Techniques</a></li>
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Club DJ Masterclass</a></li>
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Festival DJ Course</a></li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h3 className="font-bold text-lg text-[var(--pb-dark)] border-b border-gray-200 pb-3 mb-4">Audio Engineering</h3>
-              <ul className="space-y-3">
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Sound Engineering Diploma</a></li>
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Mixing & Mastering</a></li>
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Live Sound Engineering</a></li>
-                <li><a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-2 leading-relaxed">Pro Tools Certification</a></li>
-              </ul>
-            </div>
-            <div className="space-y-4">
-              <h3 className="font-bold text-lg text-[var(--pb-dark)] border-b border-gray-200 pb-3 mb-4">Popular Courses</h3>
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Music Production Column */}
+            <div className="space-y-6">
+              <h3 className="font-bold text-xl text-[var(--pb-dark)] border-b-2 border-gray-200 pb-4 mb-6">
+                Music Production
+              </h3>
               <div className="space-y-4">
-                <div className="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
-                  <h4 className="font-semibold text-[var(--pb-dark)] text-sm mb-1">Complete Music Production</h4>
-                  <p className="text-xs text-[var(--pb-medium-gray)]">12-week intensive course</p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
-                  <h4 className="font-semibold text-[var(--pb-dark)] text-sm mb-1">DJ & Music Production</h4>
-                  <p className="text-xs text-[var(--pb-medium-gray)]">Combined diploma program</p>
-                </div>
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  BA (Hons) Music Production
+                </a>
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Diploma in Music Production
+                </a>
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Ableton Live Course
+                </a>
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Logic Pro Course
+                </a>
               </div>
-              <Button className="w-full mt-6 pb-gradient text-white hover:opacity-90 text-sm">
-                View All Courses
-              </Button>
+            </div>
+
+            {/* DJ Courses Column */}
+            <div className="space-y-6">
+              <h3 className="font-bold text-xl text-[var(--pb-dark)] border-b-2 border-gray-200 pb-4 mb-6">
+                DJ Courses
+              </h3>
+              <div className="space-y-4">
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Complete DJ Course
+                </a>
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Advanced DJ Techniques
+                </a>
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Club DJ Masterclass
+                </a>
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Festival DJ Course
+                </a>
+              </div>
+            </div>
+
+            {/* Audio Engineering Column */}
+            <div className="space-y-6">
+              <h3 className="font-bold text-xl text-[var(--pb-dark)] border-b-2 border-gray-200 pb-4 mb-6">
+                Audio Engineering
+              </h3>
+              <div className="space-y-4">
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Sound Engineering Diploma
+                </a>
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Mixing & Mastering
+                </a>
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Live Sound Engineering
+                </a>
+                <a href="#" className="block text-[var(--pb-medium-gray)] hover:text-[var(--pb-bright-gold)] transition-colors py-3 text-base leading-relaxed border-b border-gray-100 last:border-b-0">
+                  Pro Tools Certification
+                </a>
+              </div>
+            </div>
+
+            {/* Popular Courses Column */}
+            <div className="space-y-6">
+              <h3 className="font-bold text-xl text-[var(--pb-dark)] border-b-2 border-gray-200 pb-4 mb-6">
+                Popular Courses
+              </h3>
+              <div className="space-y-6">
+                <div className="bg-gray-50 p-6 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer border border-gray-200">
+                  <h4 className="font-semibold text-[var(--pb-dark)] text-base mb-3">Complete Music Production</h4>
+                  <p className="text-sm text-[var(--pb-medium-gray)] leading-relaxed">12-week intensive course</p>
+                </div>
+                <div className="bg-gray-50 p-6 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer border border-gray-200">
+                  <h4 className="font-semibold text-[var(--pb-dark)] text-base mb-3">DJ & Music Production</h4>
+                  <p className="text-sm text-[var(--pb-medium-gray)] leading-relaxed">Combined diploma program</p>
+                </div>
+                <Button className="w-full mt-8 pb-gradient text-white hover:opacity-90 text-base py-3">
+                  View All Courses
+                </Button>
+              </div>
             </div>
           </div>
         </div>
