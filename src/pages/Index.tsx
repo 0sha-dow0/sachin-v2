@@ -11,27 +11,27 @@ import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen scroll-smooth snap-y snap-mandatory overflow-y-scroll h-screen">
+    <div className="h-screen overflow-y-scroll snap-y snap-mandatory">
       <Header />
-      <section className="snap-start">
+      <section className="min-h-screen snap-center snap-always">
         <Hero />
       </section>
-      <section className="snap-start">
+      <section className="min-h-screen snap-center snap-always">
         <ProgramsOverview />
       </section>
-      <section className="snap-start">
+      <section className="min-h-screen snap-center snap-always">
         <LocationsShowcase />
       </section>
-      <section className="snap-start">
+      <section className="min-h-screen snap-center snap-always">
         <IndustryRecognition />
       </section>
-      <section className="snap-start">
+      <section className="min-h-screen snap-center snap-always">
         <StudentTestimonials />
       </section>
-      <section className="snap-start">
+      <section className="min-h-screen snap-center snap-always">
         <FacilitiesEquipment />
       </section>
-      <section className="snap-start">
+      <section className="min-h-screen snap-center snap-always">
         <Footer />
       </section>
     </div>

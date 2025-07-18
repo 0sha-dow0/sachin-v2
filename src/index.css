@@ -188,18 +188,27 @@ header {
   z-index: 9998 !important;
 }
 
-/* Enhanced Scroll Snapping */
-.scroll-snap-container {
+/* Enhanced Scroll Snapping - More Noticeable */
+.snap-y {
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  overflow-y: scroll;
-  height: 100vh;
 }
 
-.scroll-snap-section {
-  scroll-snap-align: start;
+.snap-center {
+  scroll-snap-align: center;
+}
+
+.snap-always {
   scroll-snap-stop: always;
-  min-height: 100vh;
+}
+
+/* Override default scroll behavior for stronger snapping */
+html {
+  scroll-behavior: auto; /* Disable smooth scroll to let snap handle it */
+}
+
+/* Force stronger scroll snap behavior */
+* {
+  scroll-snap-type: inherit;
 }
 
 /* Custom scrollbar */
@@ -218,11 +227,4 @@ header {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--pb-bright-gold);
-}
-
-/* Smooth scroll for all browsers */
-@supports (scroll-behavior: smooth) {
-  html {
-    scroll-behavior: smooth;
-  }
 }
